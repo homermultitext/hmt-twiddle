@@ -1,6 +1,6 @@
 # hmt-twiddle
 
-Analyzing the HMT archive using utwiddle
+Analyzing the HMT archive using [utwiddle](https://github.com/neelsmith/utwiddle).
 
 ## Data sets
 

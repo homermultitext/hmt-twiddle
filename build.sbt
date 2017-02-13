@@ -12,4 +12,5 @@ libraryDependencies ++=   Seq(
   "edu.holycross.shot" %% "greek" % "1.3.1",
   "edu.holycross.shot" %% "gsphone" % "1.0.1"
   //,"org.homermultitext" %% "hmt-textmodel" % "1.1.1"
+
 )
