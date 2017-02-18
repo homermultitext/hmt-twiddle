@@ -21,3 +21,6 @@ This creates two objects:
 
 1. `corpus` : the complete HMT Greek text corpus.
 2. `orca` : an alignment of all critical signs with Iliadic lines
+
+
+For an introduction to working with these objects, see [this introductory guide](intro.md).
