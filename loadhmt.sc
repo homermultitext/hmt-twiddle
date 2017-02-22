@@ -7,8 +7,6 @@ import edu.holycross.shot.gsphone._
 import org.homermultitext.edmodel._
 
 val corpus = CorpusSource.fromFile("data/hmt_2cols.tsv")
-
-
 val orca = OrcaSource.fromFile("data/critsignorca.tsv")
 
 // create a new, subset Corpus with URN twiddling, e.g.,
