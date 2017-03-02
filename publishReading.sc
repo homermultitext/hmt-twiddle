@@ -46,7 +46,7 @@ def publishable(scholionGroup: String, publType: String) : Vector[CitableNode] =
   val tkns =tokensForDocument(scholionGroup, publType)
   val passages = passagesFromTokens(tkns)
   // For final sort:
-  val urnSeq = passages.map(_._1).distinct.zipWithIndex
+  val urnSeq = tkns.map(_._1).distinct.zipWithIndex
 
   val sortedFinal = passages.sortBy{ case (k,v) => idxForUrn(k, urnSeq) }
   sortedFinal.map { case (k,v) => CitableNode(k,v)}
