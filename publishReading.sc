@@ -20,7 +20,7 @@ case class TextTriple (urn: CtsUrn, reading: String, seq: Int)
 
 def tokensForDocument(scholGroupId:String, pubType: String): Vector[(CtsUrn, String)] = {
   // create a new, subset Corpus with URN twiddling, e.g.,
-  val scholia = corpus ~~ CtsUrn("urn:cts:greekLit:tlg5026.msA:")
+  val scholia = corpus ~~ CtsUrn(s"urn:cts:greekLit:tlg5026.${scholGroupId}:")
   // analyze a corpus and create a sequence of TokenAnalysis objects:
   println("\nAnalyzing corpus for " + scholGroupId + "...\n")
   val tokens = TeiReader.fromCorpus(scholia)
@@ -32,6 +32,10 @@ def tokensForDocument(scholGroupId:String, pubType: String): Vector[(CtsUrn, Str
 
 }
 
+
+
+
+// THIS SHOULD BE GENERALIZED AND INCORPORATED INTO THE Corpus OBJECT.As
 def passagesFromTokens(readingPairs: Vector[(CtsUrn, String)]) = {
   val triples = readingPairs.zipWithIndex.map( v  => TextTriple(v._1._1, v._1._2, v._2))
   val trVect = triples.groupBy(_.urn).toSeq.toVector
@@ -43,7 +47,7 @@ def idxForUrn(u: CtsUrn, urnSeq: Vector[(CtsUrn, Int)]) = {
 }
 
 def publishable(scholionGroup: String, publType: String) : Vector[CitableNode] = {
-  val tkns =tokensForDocument(scholionGroup, publType)
+  val tkns = tokensForDocument(scholionGroup, publType)
   val passages = passagesFromTokens(tkns)
   // For final sort:
   val urnSeq = tkns.map(_._1).distinct.zipWithIndex
