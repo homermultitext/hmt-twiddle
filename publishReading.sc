@@ -54,5 +54,30 @@ def publishable(scholionGroup: String, publType: String) : Vector[CitableNode] =
 
 def publish(scholionGroup: String, pubType: String): Unit = {
   def citableText = publishable(scholionGroup,pubType)
-  def s = citableText.map(cn => s."${cn.urn}\t${cn.text}").mkString("\n")
+  def s = citableText.map(cn => cn.urn.toString + "\t" + cn.text ).mkString("\n")
+
+  import java.io._
+  new PrintWriter(scholionGroup + "-" + pubType + ".tsv") { write(s); close }
+}
+
+def publishNormalized: Unit = {
+  val scholiaGroups = Vector("msA", "msAim", "msAint", "msAext", "msAil")
+  for (sg <- scholiaGroups) {
+    publish(sg, "normalized")
+  }
+}
+
+def publishDiplomatic: Unit = {
+  val scholiaGroups = Vector("msA", "msAim", "msAint", "msAext", "msAil")
+  for (sg <- scholiaGroups) {
+    publish(sg, "diplomatic")
+  }
+}
+
+def publishAll: Unit = {
+  val scholiaGroups = Vector("msA", "msAim", "msAint", "msAext", "msAil")
+  for (sg <- scholiaGroups) {
+    publish(sg, "normalized")
+    publish(sg, "diplomatic")
+  }
 }
