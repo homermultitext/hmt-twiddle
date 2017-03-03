@@ -2,7 +2,7 @@
 // and load this script in sbt console with `:load sliding-ngram-histo-all.sc`
 val srcData = "data/byzorthoized.tsv"
 
-// then in the console use one of these three methods:
+// then in the console use one of these methods:
 /*
 
 1. printHisto(n: Int, cutoff: Int = 2, noPunctuation: Boolean = true)
@@ -32,6 +32,9 @@ Example:
     printText("urn:cts:greekLit:tlg5026.msA.hmt:9.616.comment")
 
 prints the text content of the specified passage
+
+
+4. printPassages(gram: String)
 
 */
 
@@ -126,4 +129,13 @@ def textForUrn(twoCols: Vector[Vector[String]], u: String): String = {
 }
 def printText(u: String): Unit = {
   println(textForUrn(twoColSrc, u))
+}
+
+def printPassages(gram: String, noPunctuation: Boolean = true): Unit = {
+  val n = gram.split(" ").size
+  val urnList = urnsForNGram(strings,gram,noPunctuation)
+  println(s"\nThe ${n}-gram ${gram} occurs ${urnList.size} time(s).\n")
+  for (u <- urnList) {
+    println(u + "\n" + textForUrn(twoColSrc, u) + "\n")
+  }
 }
