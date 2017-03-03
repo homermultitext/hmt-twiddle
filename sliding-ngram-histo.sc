@@ -24,9 +24,9 @@ def ngramHisto(scholia: Vector[Vector[String]], n: Int) = {
 
 
 
-def printHisto(n: Int) : Unit = {
+def printHisto(n: Int, cutoff: Int = 2) : Unit = {
   val ngHisto = ngramHisto(scholiaSrc, n)
-  val multi = ngHisto.filter{ case (str,i) => i > 1 }
+  val multi = ngHisto.filter{ case (str,i) => i > cutoff }
   for (phrase <- multi) {
     println(phrase._1 + " " + phrase._2)
   }
