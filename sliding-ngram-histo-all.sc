@@ -1,5 +1,34 @@
-// a two-column text source
+// To use this script, set this to value a two-column text source,
+// and load this script in sbt console with `:load sliding-ngram-histo-all.sc`
 val srcData = "data/byzorthoized.tsv"
+
+// then in the console use one of these two methods:
+/*
+
+1. printHisto(n: Int, cutoff: Int = 2, noPunctuation: Boolean = true)
+
+Example:
+
+  printHisto(3)
+
+prints all 3-grams occurring more than 2 times after omitting punctuation in
+computing ngrams
+
+
+2. printUrns(gram: String, noPunctuation: Boolean = true)
+
+Example:
+
+    printUrns("ὅτι Ζηνόδοτος γράφει")
+
+prints URNs of all passages where the 3-gram "ὅτι Ζηνόδοτος γράφει" occurs after
+omitting punctuation in computing ngrams.
+
+*/
+
+
+
+//////////// no need to alter anythng below here ///////////////////////////////
 
 import scala.io.Source
 
