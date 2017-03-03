@@ -10,6 +10,8 @@ val urns = twoColSrc.map(_(0))
 val strings = twoColSrc.map(_(1).trim)
 
 
+
+
 /** Create a sequence of ngrams for a sequence of strings.
 * @param v Strings to make ngrams from
 * @param n size of ngram
@@ -19,7 +21,7 @@ def ngrams(v: Vector[String], n: Int): Vector[String] = {
   v.sliding(n,1).toVector.map(_.mkString(" "))
 }
 
-
+// This is specific to HMT definition of allowable chars
 /** convert strings to vectors of words
 * @param passages sequence of strings
 * @param skipPunct true if punctuation should be omitted
@@ -57,4 +59,12 @@ def printHisto(n: Int, cutoff: Int = 2, noPunctuation: Boolean = true) : Unit = 
   for (phrase <- multi) {
     println(phrase._1 + " " + phrase._2)
   }
+}
+
+def urnsForNGram(gram: String, dropPunctuation: Boolean = true) = {
+  val n = gram.split(" ").size
+  val words = passageToWords(strings,dropPunctuation)
+  val allGrams = words.map(v => ngrams(v,n))
+  val gramPairs = urns.zip(allGrams)
+  gramPairs.filter(_._2.contains(gram)).map(_._1)
 }
