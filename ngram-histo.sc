@@ -19,7 +19,10 @@ def ngramHisto(scholia: Vector[Vector[String]], n: Int) = {
 
 def printHisto(n: Int) : Unit = {
   val ngHisto = ngramHisto(scholiaSrc, n)
-  val multi = ngHisto
+  val multi = ngHisto.filter{ case (str,i) => i > 1 }
+  for (phrase <- multi) {
+    println(phrase._1 + " " + phrase._2)
+  }
 }
 
 
