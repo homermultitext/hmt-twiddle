@@ -24,3 +24,12 @@ This creates two objects:
 
 
 For an introduction to working with these objects, see [this introductory guide](intro.md).
+
+
+## A few sample scripts
+
+Comments in each script explain usage.
+
+- `publishReading.sc`. Generate diplomatic or normalized 2-column versions of analyzed documents.
+- `ngramHisto.sc`. Histograms of n-grams.
+- `hmtErrors.sc`. Log all errors in analyzing text corpus.
