@@ -52,6 +52,14 @@ def ngramHisto(strings: Vector[String], n: Int, dropPunctuation: Boolean = true)
   histogram.toVector
 }
 
+def urnsForNGram(strings: Vector[String], gram: String, dropPunctuation: Boolean = true): Vector[String] = {
+  val n = gram.split(" ").size
+  val words = passageToWords(strings,dropPunctuation)
+  val allGrams = words.map(v => ngrams(v,n))
+  val gramPairs = urns.zip(allGrams)
+  gramPairs.filter(_._2.contains(gram)).map(_._1)
+}
+
 
 def printHisto(n: Int, cutoff: Int = 2, noPunctuation: Boolean = true) : Unit = {
   val ngHisto = ngramHisto(strings, n, noPunctuation)
@@ -61,10 +69,11 @@ def printHisto(n: Int, cutoff: Int = 2, noPunctuation: Boolean = true) : Unit = 
   }
 }
 
-def urnsForNGram(gram: String, dropPunctuation: Boolean = true) = {
+def printUrns(gram: String, noPunctuation: Boolean = true): Unit = {
   val n = gram.split(" ").size
-  val words = passageToWords(strings,dropPunctuation)
-  val allGrams = words.map(v => ngrams(v,n))
-  val gramPairs = urns.zip(allGrams)
-  gramPairs.filter(_._2.contains(gram)).map(_._1)
+  val urnList = urnsForNGram(strings,gram,noPunctuation)
+  println(s"\nThe ${n}-gram ${gram} occurs ${urnList.size} time(s).\n")
+  for (u <- urnList) {
+    println(u)
+  }
 }
