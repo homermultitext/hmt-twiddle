@@ -32,4 +32,4 @@ Comments in each script explain usage.
 
 - `publishReading.sc`. Generate diplomatic or normalized 2-column versions of analyzed documents.
 - `ngramHisto.sc`. Histograms of n-grams.
-- `hmtErrors.sc`. Log all errors in analyzing text corpus.
+- `hmtErrors.sc`. Log all errors encountered in analyzing text corpus.
