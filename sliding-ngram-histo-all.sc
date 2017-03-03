@@ -2,7 +2,7 @@
 // and load this script in sbt console with `:load sliding-ngram-histo-all.sc`
 val srcData = "data/byzorthoized.tsv"
 
-// then in the console use one of these two methods:
+// then in the console use one of these three methods:
 /*
 
 1. printHisto(n: Int, cutoff: Int = 2, noPunctuation: Boolean = true)
@@ -23,6 +23,15 @@ Example:
 
 prints URNs of all passages where the 3-gram "ὅτι Ζηνόδοτος γράφει" occurs after
 omitting punctuation in computing ngrams.
+
+
+3. printText(u: String)
+
+Example:
+
+    printText("urn:cts:greekLit:tlg5026.msA.hmt:9.616.comment")
+
+prints the text content of the specified passage
 
 */
 
@@ -105,4 +114,16 @@ def printUrns(gram: String, noPunctuation: Boolean = true): Unit = {
   for (u <- urnList) {
     println(u)
   }
+}
+
+def textForUrn(twoCols: Vector[Vector[String]], u: String): String = {
+  val res = twoCols.filter(_(0) == u).map(_(1))
+  res.size match {
+    case 1 => res(0)
+    case 0 => "No match for " + u
+    case _ => "Don't understand ambiguous result " + res
+  }
+}
+def printText(u: String): Unit = {
+  println(textForUrn(twoColSrc, u))
 }
