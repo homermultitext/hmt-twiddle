@@ -36,6 +36,21 @@ prints the text content of the specified passage
 
 4. printPassages(gram: String)
 
+Example:
+
+    printPassages("τινὲς γράφουσιν")
+
+prints the text of all patching matchng the bigram  τινὲς γράφουσιν
+
+
+5. printMatchingHisto(n: Int, patt: String, cutoff: Int = 1, noPunctuation: Boolean = true)
+
+Example:
+
+    printMatchingHisto(2, " γρ")
+
+prints histogram of all bigrams matching the string " γρ" so (due to the leading space) matches bigrams where the second word begins with γρ
+
 */
 
 
@@ -137,5 +152,13 @@ def printPassages(gram: String, noPunctuation: Boolean = true): Unit = {
   println(s"\nThe ${n}-gram ${gram} occurs ${urnList.size} time(s).\n")
   for (u <- urnList) {
     println(u + "\n" + textForUrn(twoColSrc, u) + "\n")
+  }
+}
+
+def printMatchingHisto(n: Int, patt: String, cutoff: Int = 1, noPunctuation: Boolean = true) : Unit = {
+  val ngHisto = ngramHisto(strings, n, noPunctuation)
+  val matches = ngHisto.filter{ case (str,i) => str.contains(patt) }.filter{ case (str,i) => i > cutoff }
+  for (phrase <- matches) {
+    println(phrase._1 + " " + phrase._2)
   }
 }
