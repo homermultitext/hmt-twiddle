@@ -31,5 +31,5 @@ For an introduction to working with these objects, see [this introductory guide]
 Comments in each script explain usage.
 
 - `publishReading.sc`. Generate diplomatic or normalized 2-column versions of analyzed documents.
-- `ngramHisto.sc`. Histograms of n-grams.
+- `hmt-ngrams.sc`. Play with n-grams and histograms of n-grams in all HMT texts.
 - `hmtErrors.sc`. Log all errors encountered in analyzing text corpus.
