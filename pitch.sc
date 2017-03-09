@@ -13,22 +13,12 @@ val syllableVects = gwVects.map(LGSyllable.syllabify(_))
 val pitchPatterns= syllableVects.map(v => v.map(_.accent.getOrElse("_")).mkString)
 
 
-// print the whole thing:  println(pitchPatternVect.mkString("\n"))
-// look up by passage:
 
-def pitchForPassage(u: CtsUrn): String = {
-  try {
-    val strings = citablePitch.filter(_._1 == u).map(_._2)
-    strings
-  } catch {
-    case _ : Throwable => "Could not find a passage for " + s
-  }
-}
 
 def printPitch(s: String) {
   val u = CtsUrn("urn:cts:greekLit:tlg0012.tlg001.omar:" + s)
-  val cnVect = corpus.nodes.filter(_.urn == u)
-  for (cn <- cnVect) {
+  val selected = corpus ~~ u
+  for (cn <- selected.nodes) {
     val count = urns.indexOf(cn.urn)
     val sylls = syllableVects(count)
     println(sylls.map(_.ucode).mkString("-"))
