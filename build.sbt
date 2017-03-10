@@ -6,7 +6,7 @@ resolvers += Resolver.jcenterRepo
 resolvers += Resolver.bintrayRepo("neelsmith","maven")
 libraryDependencies ++=   Seq(
   "edu.holycross.shot.cite" %% "xcite" % "2.1.0",
-  "edu.holycross.shot" %% "ohco2" % "6.3.0",
+  "edu.holycross.shot" %% "ohco2" % "6.5.2",
   "edu.holycross.shot" %% "orca" % "3.0.0",
 
   "edu.holycross.shot" %% "greek" % "1.3.3",
