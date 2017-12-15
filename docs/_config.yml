@@ -6,8 +6,8 @@ permalink:        pretty
 
 # Setup
 title:            HMT twiddle
-tagline:          ''
-description:      ''
+tagline:          'Scripting the Homer Multitext archive'
+description:      'A Scala environment for interactive work with HMT project data sets'
 
 
 baseurl: '/hmt-twiddle/'
@@ -18,20 +18,9 @@ author:
 
 
 links:
-  - title: Schedule
-    url:  /schedule
-  - title: Current score!
-    url:  /score
-  - title: Images of the manuscript
-    url:  /thumbs
-  - title: References for editors
-    url:  /references
-  - title: Hackathon home page
-    url:  /
-  - title: Further projects
-    url:  /next
-  - title: HC MID club
-    url: http://hcmid.github.io/
+  - title: HMT on github
+    url: http://homermultitext.github.io/
     external: true
-  - title: Acknowledgments
-    url: gratias
+  - title: HMT web
+    url: http://homermultitext.org/
+    external: true
