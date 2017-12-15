@@ -3,7 +3,7 @@ layout: page
 title: "HMT libraries"
 ---
 
-`hmt-twiddle` loads the `hmt-textmodel` library, for working with HMT text contents.  It in turn relies on the generic `ohco2` library for two important  constructs:
+`hmt-twiddle` loads the `hmt-textmodel` library for working with HMT text contents.  It in turn relies on the generic `ohco2` library for two important  constructs:
 
 1. a `Corpus` of texts, made from a Vector of `CitableNode`s.
 2. the `CitableNode` object, a single citable passage of text with URN and text content
