@@ -1,6 +1,8 @@
 ---
 title:  HMT twiddle
-layout: page  
+layout: page
 ---
 
-Docs for `hmt-twiddle` will go here.
+In-progress documentation for `hmt-twiddle`:
+
+-  an [introduction](intro)
