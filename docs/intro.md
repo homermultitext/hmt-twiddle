@@ -4,39 +4,8 @@ title: "Using hmt-twiddle"
 ---
 
 
-## Introduction and prerequisites
 
-The `hmt-twiddle` repository sets up a Scala build environment for interactive work with HMT data sets in an sbt console.  You need both [Scala](https://www.scala-lang.org/) and the interactive build tool, [sbt](https://www.scala-sbt.org/), to use it.
-
-You can load the HMT project code libraries and the data sets including in this repository by:
-
-1.  starting an sbt console (run `sbt console` from a terminal)
-2.  at the console prompt, enter `loadhmt.sc`
-3.
-
-This loads all the code libraries you need, and creates two data objects:
-
-1. `corpus` : the complete HMT Greek text corpus.
-2. `orca` : an alignment of all critical signs with Iliadic lines
-
-This guide illustrates a few ways you can work with these objects.
-
-## Main libraries
-
-`hmt-twiddle` loads the `hmt-textmodel` library, for working with HMT text contents.  It in turn relies on the generic `ohco2` library for two important  constructs:
-
-1. a `Corpus` of texts, made from a Vector of `CitableNode`s.
-2. the `CitableNode` object, a single citable passage of text with URN and text content
-
-
-The top-level concept of the `hmt-textmodel` is the `TokenAnalysis`.  A `TokenAnalysis` has two members: a CTS URN identifying the text, and a complex `HmtToken` with analytical data. The `HmtToken` captures everything expressed about a token by HMT project XML editions, but the `TokenAnalysis`  has high-level functions (illustrated here) for working with its contents.  These functions either:
-
-- *filter* a Vector of analyses to create a new Vector of analyses, or
-- *transform* a Vector of analyses to a Vector of citable text nodes
-
-
-
-## Overview: analyze a corpus of texts
+## Analyze a corpus of texts
 
 
 The `loadhmt.sc` script uses the `ohco2` library to create a corpus of the whole HMT project:
