@@ -3,6 +3,16 @@ title:  HMT twiddle
 layout: page
 ---
 
+## What it is
+
+`hmt-twiddle`is a high-level library for working with digital editions from the Homer Multitext project.
+
+See [a brief overview](overview) explaining how `hmt-twiddle` implements abstract models of citable texts and their contents.
+
+
+
+## How to use it
+
 In-progress documentation for `hmt-twiddle`:
 
 -  [how to run `hmt-twiddle`](howtorun)
